@@ -15,6 +15,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -57,6 +58,14 @@ fun ColorSearchScreen() {
             .fillMaxSize()
             .padding(16.dp)
     ) {
+        Spacer(modifier = Modifier.height(16.dp))
+
+        TextField(
+            value = inputText,
+            onValueChange = { inputText = it },
+            modifier = Modifier.fillMaxWidth(),
+        )
+
         OutlinedTextField(
             value = inputText,
             onValueChange = { inputText = it },
@@ -74,6 +83,7 @@ fun ColorSearchScreen() {
 
                 if (foundColor != null) {
                     buttonColor = foundColor
+                    Log.d("ColorSearch", "Пользовательский цвет \"$userColorName\" найден")
                 } else {
                     Log.d(
                         "ColorSearch",
